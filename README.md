@@ -37,29 +37,4 @@ siga ejecutándose en el puerto 8080 y vuelve a cargar la aplicación.
 
 El servicio incluye tres libros de muestra y guarda los estudiantes, préstamos y cambios de stock en `.biblioteca.json`.
 
-## Desplegar la API en Render
 
-1. Sube este proyecto a un repositorio de GitHub. Incluye `server.dart`,
-   `lib/`, `Dockerfile` y `render.yaml`.
-2. Entra a [Render](https://render.com), crea una cuenta e inicia sesión con
-   GitHub.
-3. Selecciona **New > Blueprint** y el repositorio del proyecto.
-4. Render detectará `render.yaml`. Confirma la creación del servicio
-   `biblioteca-api` y espera a que termine el despliegue.
-5. Copia la URL pública que Render asigna, por ejemplo
-   `https://biblioteca-api.onrender.com`.
-6. Comprueba la API abriendo
-   `https://biblioteca-api.onrender.com/biblioteca` en el navegador.
-
-Compila la aplicación Flutter usando esa URL:
-
-```powershell
-flutter build apk --release --dart-define=BIBLIOTECA_API_URL=https://biblioteca-api.onrender.com
-```
-
-Render asigna automáticamente el puerto mediante la variable `PORT`, que el
-servidor lee al iniciarse. En el plan gratuito, el servicio puede suspenderse
-después de un período sin solicitudes y tardar unos segundos en responder al
-primer acceso. El archivo `.biblioteca.json` se conserva mientras la instancia
-no sea reemplazada; para datos permanentes se recomienda migrar a una base de
-datos.
